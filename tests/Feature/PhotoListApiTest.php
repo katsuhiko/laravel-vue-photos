@@ -4,11 +4,9 @@ namespace Tests\Feature;
 
 use App\Photo;
 use App\User;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\DB;
 
 class PhotoListApiTest extends TestCase
 {
