@@ -4,10 +4,13 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import './bootstrap'
 
 import Vue from 'vue'
 // ルーティングの定義をインポートする
 import router from './router'
+// ストアをインポートする
+import store from './store'
 // ルートコンポーネントをインポートする
 import App from './App.vue'
 
@@ -32,6 +35,7 @@ import App from './App.vue'
 const app = new Vue({
   el: '#app',
   router, // ルーティングの定義を読み込む
+  store, // ストアを読み込む
   components: { App }, // ルートコンポーネントの使用を宣言する
   template: '<App />' // ルートコンポーネントを描画する
 });
