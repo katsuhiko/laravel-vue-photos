@@ -5,13 +5,13 @@
     </RouterLink>
     <div class="navbar__menu">
       <div v-if="isLogin" class="navbar__item">
-        <button class="button">
+        <button class="button" @click="showForm = ! showForm">
           <i class="icon ion-md-add"></i>
           Submit a photo
         </button>
       </div>
       <span v-if="isLogin" class="navbar__item">
-        username
+        {{ username }}
       </span>
       <div v-else class="navbar__item">
         <RouterLink class="button button--link" to="/login">
@@ -19,18 +19,28 @@
         </RouterLink>
       </div>
     </div>
+    <PhotoForm v-model="showForm" />
   </nav>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import PhotoForm from './PhotoForm.vue'
+
 export default {
-  computed: {
-    isLogin () {
-      return this.$store.getters['auth/check']
-    },
-    username () {
-      return this.$store.getters['auth/username']
+  components: {
+    PhotoForm
+  },
+  data () {
+    return {
+      showForm: false
     }
+  },
+  computed: {
+    ...mapGetters({
+      isLogin: 'auth/check',
+      username: 'auth/username'
+    })
   }
 }
 </script>
