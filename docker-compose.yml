@@ -23,7 +23,8 @@ services:
       - frontend
       - backend
   app:
-    image: katsuhikonagashima/php-fpm-mysql:7.2-stretch
+    #image: katsuhikonagashima/php-fpm-mysql:7.2-stretch
+    build: ./docker/php-fpm
     container_name: app
     volumes:
       - ./:/var/www/html
