@@ -9,3 +9,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+# ADD
+/public/js/app.js
+/public/css/app.css

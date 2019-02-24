@@ -2,7 +2,7 @@
 
 https://www.hypertextcandy.com/vue-laravel-tutorial-introduction/
 
-# install
+## install
 
 ```
 git clone https://github.com/katsuhiko/laravel-vue-photos.git
@@ -17,4 +17,10 @@ docker-compose up -d
 
 ```
 docker-compose down
+```
+
+## DB
+
+```
+CREATE DATABASE photos DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 ```
