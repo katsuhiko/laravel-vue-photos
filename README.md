@@ -2,6 +2,7 @@
 
 https://www.hypertextcandy.com/vue-laravel-tutorial-introduction/
 
+
 ## install
 
 ```
@@ -19,8 +20,17 @@ docker-compose up -d
 docker-compose down
 ```
 
+
 ## DB
 
 ```
 CREATE DATABASE photos DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+```
+
+
+## Test
+
+```
+docker exec -it app /bin/bash
+./vendor/bin/phpunit --testdox
 ```
