@@ -57,7 +57,8 @@ class PhotoController extends Controller
 
         // インスタンス生成時に割り振られたランダムなID値と
         // 本来の拡張子を組み合わせてファイル名とする
-        $photo->filename = $photo->id . '.' . $extension;
+        $id = $photo->id;
+        $photo->filename = $id . '.' . $extension;
 
         // S3にファイルを保存する
         // 第三引数の'public'はファイルを公開状態で保存するため
@@ -76,6 +77,9 @@ class PhotoController extends Controller
             Storage::cloud()->delete($photo->filename);
             throw $exception;
         }
+
+        $photo = Photo::where('id', $id)
+            ->with(['owner', 'comments.author', 'likes'])->first();
 
         // リソースの新規作成なので
         // レスポンスコードは201(CREATED)を返却する
@@ -116,9 +120,9 @@ class PhotoController extends Controller
         $photo->comments()->save($comment);
 
         // authorリレーションをロードするためにコメントを取得しなおす
-        $new_comment = Comment::where('id', $comment->id)->with('author')->first();
+        $newComment = Comment::where('id', $comment->id)->with('author')->first();
 
-        return response($new_comment, 201);
+        return response($newComment, 201);
     }
 
     /**
